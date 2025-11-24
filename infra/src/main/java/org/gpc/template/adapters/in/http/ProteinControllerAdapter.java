@@ -1,11 +1,10 @@
 package org.gpc.template.adapters.in.http;
 
 import lombok.AllArgsConstructor;
-import org.gpc.template.adapters.in.http.dto.CreatePetRequestDTO;
 import org.gpc.template.adapters.in.http.dto.DTO;
-import org.gpc.template.adapters.in.http.dto.UpdatePetRequestDTO;
+import org.gpc.template.adapters.in.http.dto.UpdateProteinRequestDTO;
 import org.gpc.template.handlers.CreatePetHandler;
-import org.gpc.template.handlers.DeletePetHandler;
+import org.gpc.template.handlers.DeleteProteinHandler;
 import org.gpc.template.handlers.GetPetHandler;
 import org.gpc.template.handlers.UpdatePetHandler;
 import org.gpc.template.handlers.commands.UpdatePetCommand;
@@ -22,12 +21,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @AllArgsConstructor
-public class PetControllerAdapter {
+public class ProteinControllerAdapter {
   private final CreatePetHandler createPetHandler;
   private final GetPetHandler getPetHandler;
-  private final DeletePetHandler deletePetHandler;
+  private final DeleteProteinHandler deleteProteinHandler;
   private final UpdatePetHandler updatePetHandler;
-  private static final Logger logger = LoggerFactory.getLogger(PetControllerAdapter.class);
+  private static final Logger logger = LoggerFactory.getLogger(ProteinControllerAdapter.class);
 
   @PostMapping("/pets")
   public ResponseEntity<DTO> createPet(@RequestBody CreatePetRequestDTO petRequestDto) {
@@ -41,11 +40,11 @@ public class PetControllerAdapter {
 
   @DeleteMapping("/pets/{pet_id}")
   public ResponseEntity<DTO> deletePet(@PathVariable Integer pet_id) {
-    return deletePetHandler.handle(pet_id);
+    return deleteProteinHandler.handle(pet_id);
   }
 
   @PutMapping("/pets/{pet_id}")
-  public ResponseEntity<DTO> putPet(@PathVariable Integer pet_id, @RequestBody UpdatePetRequestDTO petRequestDto) {
+  public ResponseEntity<DTO> putPet(@PathVariable Integer pet_id, @RequestBody UpdateProteinRequestDTO petRequestDto) {
     return updatePetHandler.handle(new UpdatePetCommand(petRequestDto, pet_id));
   }
 

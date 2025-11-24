@@ -1,3 +1,3 @@
-rootProject.name = 'template-gpc'
+rootProject.name = 'proteins-gpc'
 include 'domain'
 include 'infra'

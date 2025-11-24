@@ -3,7 +3,7 @@ package org.gpc.template.configuration;
 import org.gpc.template.adapters.out.mysql.MysqlPetRepositoryImpl;
 import org.gpc.template.adapters.out.mysql.PetRepository;
 import org.gpc.template.handlers.CreatePetHandler;
-import org.gpc.template.handlers.DeletePetHandler;
+import org.gpc.template.handlers.DeleteProteinHandler;
 import org.gpc.template.handlers.GetPetHandler;
 import org.gpc.template.handlers.UpdatePetHandler;
 import org.gpc.template.port.RepositoryPort;
@@ -56,8 +56,8 @@ public class AppConfig {
     }
 
     @Bean
-    DeletePetHandler getDeletePetHandler(DeletePetUseCaseImpl deletePetUseCase){
-        return new DeletePetHandler(deletePetUseCase);
+    DeleteProteinHandler getDeletePetHandler(DeletePetUseCaseImpl deletePetUseCase){
+        return new DeleteProteinHandler(deletePetUseCase);
     }
 
 }

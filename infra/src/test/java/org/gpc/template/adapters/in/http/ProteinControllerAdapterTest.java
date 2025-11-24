@@ -2,8 +2,7 @@ package org.gpc.template.adapters.in.http;
 
 import org.gpc.template.MySQLTestContainer;
 import org.gpc.template.adapters.in.http.dto.CreatePetRequestDTO;
-import org.gpc.template.adapters.in.http.dto.CreatePetResponseDTO;
-import org.gpc.template.adapters.in.http.dto.UpdatePetRequestDTO;
+import org.gpc.template.adapters.in.http.dto.UpdateProteinRequestDTO;
 import org.gpc.template.kernel.Pet;
 import org.gpc.template.kernel.Specie;
 import org.junit.jupiter.api.Test;
@@ -24,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Testcontainers
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class PetControllerAdapterTest extends MySQLTestContainer {
+class ProteinControllerAdapterTest extends MySQLTestContainer {
 
     @Value("${local.server.port}")
     private Integer port;
@@ -71,12 +70,12 @@ class PetControllerAdapterTest extends MySQLTestContainer {
         String path = host + port + "/pets" + "/" + id;
 
         Pet expectedPet = new Pet("Makarritas", 1, Specie.CAT, "Criollito");
-        UpdatePetRequestDTO entity = new UpdatePetRequestDTO(
+        UpdateProteinRequestDTO entity = new UpdateProteinRequestDTO(
             Optional.of(expectedPet.name()),
             Optional.of(expectedPet.age()),
             Optional.empty(),
             Optional.empty());
-        HttpEntity<UpdatePetRequestDTO> request = new HttpEntity<>(entity);
+        HttpEntity<UpdateProteinRequestDTO> request = new HttpEntity<>(entity);
         ResponseEntity<Object> response = restTemplate.exchange(path, HttpMethod.PUT, request, Object.class);
 
         validateSuccessfulResponse(response);

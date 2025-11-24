@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 @AllArgsConstructor
-public class DeletePetHandler implements Handler<Integer, ResponseEntity<DTO>> {
+public class DeleteProteinHandler implements Handler<Integer, ResponseEntity<DTO>> {
   private final DeletePetUseCaseImpl deletePetUseCase;
 
   @Override

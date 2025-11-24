@@ -3,7 +3,7 @@ package org.gpc.template.handlers;
 import lombok.AllArgsConstructor;
 import org.gpc.template.adapters.in.http.dto.DTO;
 import org.gpc.template.adapters.in.http.dto.ErrorResponse;
-import org.gpc.template.adapters.in.http.dto.UpdatePetRequestDTO;
+import org.gpc.template.adapters.in.http.dto.UpdateProteinRequestDTO;
 import org.gpc.template.handlers.commands.UpdatePetCommand;
 import org.gpc.template.kernel.Specie;
 import org.gpc.template.kernel.UpdatePet;
@@ -23,12 +23,12 @@ public class UpdatePetHandler implements Handler<UpdatePetCommand, ResponseEntit
 
   @Override
   public ResponseEntity<DTO> handle(UpdatePetCommand command) {
-    UpdatePetRequestDTO updatePetRequestDTO = command.updatePetRequestDTO();
+    UpdateProteinRequestDTO updateProteinRequestDTO = command.updateProteinRequestDTO();
     Integer petID = command.petID();
-    Optional<String> maybeNameToBeUpdated = updatePetRequestDTO.name().filter(filterNonEmptyString());
-    Optional<Integer> maybeAgeToBeUpdated = updatePetRequestDTO.age().filter(filterNonNegativeNumbers());
-    Optional<String> maybeSpecieToBeUpdated = updatePetRequestDTO.specie().filter(filterNonEmptyString());
-    Optional<String> maybeBreedToBeUpdated = updatePetRequestDTO.breed().filter(filterNonEmptyString());
+    Optional<String> maybeNameToBeUpdated = updateProteinRequestDTO.name().filter(filterNonEmptyString());
+    Optional<Integer> maybeAgeToBeUpdated = updateProteinRequestDTO.age().filter(filterNonNegativeNumbers());
+    Optional<String> maybeSpecieToBeUpdated = updateProteinRequestDTO.specie().filter(filterNonEmptyString());
+    Optional<String> maybeBreedToBeUpdated = updateProteinRequestDTO.breed().filter(filterNonEmptyString());
 
     Optional<DTO> maybeValidationError = validateFieldsToBeUpdated(
         maybeNameToBeUpdated,
