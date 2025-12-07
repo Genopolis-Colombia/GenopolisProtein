@@ -6,19 +6,22 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
-import org.gpc.template.kernel.Specie;
+
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
 @Setter
 @Getter
-public class PetEntity {
+public class ProteinEntity {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
-
-    private String name;
-
-    private Integer age;
-    private Specie specie;
-    private String breed;
+    private UUID id;
+    private String fastaNombre;
+    private String fastaSecuencia;
+    private String fuente;
+    private String organismo;
+    private String clasificacion;
+    private Integer ecClasificacion;
+    private String autores;
 }

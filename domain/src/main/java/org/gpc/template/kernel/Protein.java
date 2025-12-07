@@ -8,9 +8,7 @@ public record Protein (String fastaNombre,
                        String organismo,
                        String clasificacion,
                        Integer ecClasificacion,
-                       String autores,
-                       LocalDateTime creadoEn,
-                       LocalDateTime actualizadoEn){
+                       String autores){
 
 }
 

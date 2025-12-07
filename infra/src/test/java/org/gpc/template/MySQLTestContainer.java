@@ -35,10 +35,10 @@ public abstract class MySQLTestContainer {
     }
 
     @Autowired
-    protected RepositoryPort mySQLPetRepository;
+    protected RepositoryPort mySQLProteinRepository;
 
     @BeforeEach
     void setUp() {
-        mySQLPetRepository.deleteAll();
+        mySQLProteinRepository.deleteAll();
     }
 }

@@ -1,16 +1,16 @@
 package org.gpc.template.configuration;
 
-import org.gpc.template.adapters.out.mysql.MysqlPetRepositoryImpl;
-import org.gpc.template.adapters.out.mysql.PetRepository;
-import org.gpc.template.handlers.CreatePetHandler;
+import org.gpc.template.adapters.out.mysql.MysqlProteinRepositoryImpl;
+import org.gpc.template.adapters.out.mysql.ProteinRepository;
+import org.gpc.template.handlers.CreateProteinHandler;
 import org.gpc.template.handlers.DeleteProteinHandler;
-import org.gpc.template.handlers.GetPetHandler;
-import org.gpc.template.handlers.UpdatePetHandler;
+import org.gpc.template.handlers.GetProteinHandler;
+import org.gpc.template.handlers.UpdateProteinHandler;
 import org.gpc.template.port.RepositoryPort;
-import org.gpc.template.usecase.CreatePetUseCaseImpl;
-import org.gpc.template.usecase.DeletePetUseCaseImpl;
-import org.gpc.template.usecase.GetPetUseCaseImpl;
-import org.gpc.template.usecase.PutPetUseCaseImpl;
+import org.gpc.template.usecase.CreateProteinUseCaseImpl;
+import org.gpc.template.usecase.DeleteProteinUseCaseImpl;
+import org.gpc.template.usecase.GetProteinUseCaseImpl;
+import org.gpc.template.usecase.PutProteinUseCaseImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -18,46 +18,46 @@ import org.springframework.context.annotation.Configuration;
 public class AppConfig {
 
     @Bean
-    MysqlPetRepositoryImpl getMysqlPetRepositoryImpl(PetRepository petRepository){
-        return new MysqlPetRepositoryImpl(petRepository);
+    MysqlProteinRepositoryImpl getMysqlProteinRepositoryImpl(ProteinRepository proteinRepository){
+        return new MysqlProteinRepositoryImpl(proteinRepository);
     }
     @Bean
-    CreatePetUseCaseImpl getCreatePetUseCaseImpl(RepositoryPort repositoryPort){
-        return new CreatePetUseCaseImpl(repositoryPort);
-    }
-
-    @Bean
-    GetPetUseCaseImpl getPetUseCase(RepositoryPort repositoryPort){
-        return new GetPetUseCaseImpl(repositoryPort);
+    CreateProteinUseCaseImpl getCreateProteinUseCaseImpl(RepositoryPort repositoryPort){
+        return new CreateProteinUseCaseImpl(repositoryPort);
     }
 
     @Bean
-    DeletePetUseCaseImpl getDeletePetUseCase(RepositoryPort repositoryPort){
-        return new DeletePetUseCaseImpl(repositoryPort);
-    }
-    @Bean
-    PutPetUseCaseImpl getPutPetUseCase(RepositoryPort repositoryPort){
-        return new PutPetUseCaseImpl(repositoryPort);
+    GetProteinUseCaseImpl getProteinUseCase(RepositoryPort repositoryPort){
+        return new GetProteinUseCaseImpl(repositoryPort);
     }
 
     @Bean
-    UpdatePetHandler getUpdatePetHandler(GetPetUseCaseImpl getPetUseCase, PutPetUseCaseImpl putPetUseCase){
-        return new UpdatePetHandler(putPetUseCase, getPetUseCase);
+    DeleteProteinUseCaseImpl getDeleteProteinUseCase(RepositoryPort repositoryPort){
+        return new DeleteProteinUseCaseImpl(repositoryPort);
+    }
+    @Bean
+    PutProteinUseCaseImpl getPutProteinUseCase(RepositoryPort repositoryPort){
+        return new PutProteinUseCaseImpl(repositoryPort);
     }
 
     @Bean
-    CreatePetHandler getCreatePetHandler(CreatePetUseCaseImpl createPetUseCase){
-        return new CreatePetHandler(createPetUseCase);
+    UpdateProteinHandler getUpdateProteinHandler(GetProteinUseCaseImpl getProteinUseCase, PutProteinUseCaseImpl putProteinUseCase){
+        return new UpdateProteinHandler(putProteinUseCase, getProteinUseCase);
     }
 
     @Bean
-    GetPetHandler getGetPetHandler(GetPetUseCaseImpl getPetUseCase){
-        return new GetPetHandler(getPetUseCase);
+    CreateProteinHandler getCreateProteinHandler(CreateProteinUseCaseImpl createProteinUseCase){
+        return new CreateProteinHandler(createProteinUseCase);
     }
 
     @Bean
-    DeleteProteinHandler getDeletePetHandler(DeletePetUseCaseImpl deletePetUseCase){
-        return new DeleteProteinHandler(deletePetUseCase);
+    GetProteinHandler getGetProteinHandler(GetProteinUseCaseImpl getProteinUseCase){
+        return new GetProteinHandler(getProteinUseCase);
+    }
+
+    @Bean
+    DeleteProteinHandler getDeleteProteinHandler(DeleteProteinUseCaseImpl deleteProteinUseCase){
+        return new DeleteProteinHandler(deleteProteinUseCase);
     }
 
 }

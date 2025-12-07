@@ -1,15 +1,16 @@
 package org.gpc.template.adapters.in.http.dto;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
-public record ProteinResponseDTO(String fastaNombre,
+public record ProteinResponseDTO(
+                                UUID idProteina,
+                                String fastaNombre,
                                  String fastaSecuencia,
                                  String fuente,
                                  String organismo,
                                  String clasificacion,
                                  Integer ecClasificacion,
-                                 String autores,
-                                 LocalDateTime creadoEn,
-                                 LocalDateTime actualizadoEn) implements DTO {
+                                 String autores) implements DTO {
 
 }

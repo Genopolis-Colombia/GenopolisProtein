@@ -2,7 +2,6 @@ package org.gpc.template.adapters.out.mysql;
 
 import org.gpc.template.MySQLTestContainer;
 import org.gpc.template.kernel.Pet;
-import org.gpc.template.kernel.Specie;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.testcontainers.junit.jupiter.Testcontainers;
@@ -14,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Testcontainers
 @SpringBootTest
-class MysqlPetRepositoryImplTest extends MySQLTestContainer {
+class MysqlProteinRepositoryImplTest extends MySQLTestContainer {
     @Test
     void savePet() {
         Integer id = 1;

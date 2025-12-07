@@ -1,6 +1,6 @@
 package org.gpc.template.adapters.in.http.dto;
 
-import java.time.LocalDateTime;
+import java.util.UUID;
 
 public record CreateProteinRequestDTO(String fastaNombre,
                                       String fastaSecuencia,
@@ -8,7 +8,7 @@ public record CreateProteinRequestDTO(String fastaNombre,
                                       String organismo,
                                       String clasificacion,
                                       Integer ecClasificacion,
-                                      String autores,
-                                      LocalDateTime creadoEn,
-                                      LocalDateTime actualizadoEn) {
+                                      String autores
+) {
+
 }

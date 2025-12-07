@@ -1,25 +1,32 @@
 package org.gpc.template.handlers;
 
 import lombok.AllArgsConstructor;
+import org.gpc.template.adapters.in.http.dto.CreateProteinRequestDTO;
+import org.gpc.template.adapters.in.http.dto.CreateProteinResponseDTO;
 import org.gpc.template.adapters.in.http.dto.DTO;
 import org.gpc.template.kernel.Protein;
-import org.gpc.template.kernel.Specie;
-import org.gpc.template.usecase.CreatePetUseCaseImpl;
+import org.gpc.template.usecase.CreateProteinUseCaseImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.util.UUID;
+
+
 @AllArgsConstructor
-public class CreateProteinHandler implements Handler<CreatePetRequestDTO, ResponseEntity<DTO>> {
-  private final CreatePetUseCaseImpl createPetUseCase;
+public class CreateProteinHandler implements Handler<CreateProteinRequestDTO, ResponseEntity<DTO>> {
+  private final CreateProteinUseCaseImpl createProteinUseCase;
 
   @Override
-  public ResponseEntity<DTO> handle(CreatePetRequestDTO petRequestDto) {
-    Integer id = createPetUseCase.execute(new Pet(
-        petRequestDto.name(),
-        petRequestDto.age(),
-        Specie.valueOf(petRequestDto.specie().toUpperCase()),
-        petRequestDto.breed()
+  public ResponseEntity<DTO> handle(CreateProteinRequestDTO proteinRequestDto) {
+    UUID id = createProteinUseCase.execute(new Protein(
+        proteinRequestDto.fastaNombre(),
+        proteinRequestDto.fastaSecuencia(),
+        proteinRequestDto.fuente(),
+        proteinRequestDto.organismo(),
+        proteinRequestDto.clasificacion(),
+        proteinRequestDto.ecClasificacion(),
+        proteinRequestDto.autores()
     ));
-    return new ResponseEntity<>(new CreatePetResponseDTO(id), HttpStatus.CREATED);
+    return new ResponseEntity<>(new CreateProteinResponseDTO(id), HttpStatus.CREATED);
   }
 }
