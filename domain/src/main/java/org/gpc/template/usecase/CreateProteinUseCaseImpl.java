@@ -19,7 +19,7 @@ public class CreateProteinUseCaseImpl implements UseCase<Protein, UUID>{
 
     @Override
     public UUID execute(Protein command) {
-        logger.debug("Executing command: " + command);
+        logger.debug("Executing command: {}", command);
         return repositoryPort.saveProtein(command);
     }
 }
