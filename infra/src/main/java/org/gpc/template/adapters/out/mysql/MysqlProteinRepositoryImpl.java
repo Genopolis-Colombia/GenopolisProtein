@@ -8,8 +8,10 @@ import org.gpc.template.port.RepositoryPort;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.StreamSupport;
 
 
 public class MysqlProteinRepositoryImpl implements RepositoryPort {
@@ -33,6 +35,14 @@ public class MysqlProteinRepositoryImpl implements RepositoryPort {
     }
 
     @Override
+    public List<Protein> getAllProteins() {
+        Iterable<ProteinEntity> proteinEntityIterator = proteinRepository.findAll();
+        return StreamSupport.stream(proteinEntityIterator.spliterator(), false)
+                .map(ProteinTransformer::entityToProtein)
+                .toList();
+    }
+
+    @Override
     public void deleteProtein(UUID id) {
         proteinRepository.deleteById(id);
     }
@@ -47,7 +57,7 @@ public class MysqlProteinRepositoryImpl implements RepositoryPort {
 
     // Only for testing purposes
     @Override
-    public void deleteAll(){
+    public void deleteAll() {
         proteinRepository.deleteAll();
     }
 }

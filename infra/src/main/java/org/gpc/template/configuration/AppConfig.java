@@ -2,15 +2,9 @@ package org.gpc.template.configuration;
 
 import org.gpc.template.adapters.out.mysql.MysqlProteinRepositoryImpl;
 import org.gpc.template.adapters.out.mysql.ProteinRepository;
-import org.gpc.template.handlers.CreateProteinHandler;
-import org.gpc.template.handlers.DeleteProteinHandler;
-import org.gpc.template.handlers.GetProteinHandler;
-import org.gpc.template.handlers.UpdateProteinHandler;
+import org.gpc.template.handlers.*;
 import org.gpc.template.port.RepositoryPort;
-import org.gpc.template.usecase.CreateProteinUseCaseImpl;
-import org.gpc.template.usecase.DeleteProteinUseCaseImpl;
-import org.gpc.template.usecase.GetProteinUseCaseImpl;
-import org.gpc.template.usecase.PutProteinUseCaseImpl;
+import org.gpc.template.usecase.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -41,6 +35,11 @@ public class AppConfig {
     }
 
     @Bean
+    GetAllProteinsUseCaseImpl getAllProteinsUseCase(RepositoryPort repositoryPort){
+        return new GetAllProteinsUseCaseImpl(repositoryPort);
+    }
+
+    @Bean
     UpdateProteinHandler getUpdateProteinHandler(GetProteinUseCaseImpl getProteinUseCase, PutProteinUseCaseImpl putProteinUseCase){
         return new UpdateProteinHandler(putProteinUseCase, getProteinUseCase);
     }
@@ -60,4 +59,8 @@ public class AppConfig {
         return new DeleteProteinHandler(deleteProteinUseCase);
     }
 
+    @Bean
+    GetAllProteinsHandler getAllProteinsHandler(GetAllProteinsUseCaseImpl getAllProteinsUseCase){
+        return new GetAllProteinsHandler(getAllProteinsUseCase);
+    }
 }

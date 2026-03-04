@@ -19,6 +19,7 @@ public class CreateProteinHandler implements Handler<CreateProteinRequestDTO, Re
   @Override
   public ResponseEntity<DTO> handle(CreateProteinRequestDTO proteinRequestDto) {
     UUID id = createProteinUseCase.execute(new Protein(
+         null,
         proteinRequestDto.fastaNombre(),
         proteinRequestDto.fastaSecuencia(),
         proteinRequestDto.fuente(),
